@@ -190,13 +190,22 @@ body {
     text-align: center;
 }
 
+.input-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
 .input-field {
     width: 100%;
     background: transparent;
     border: none;
     border-bottom: 3px solid var(--gray);
     color: var(--white);
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     padding: 1rem 0;
     text-align: center;

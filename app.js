@@ -129,7 +129,14 @@ function updateProgress() {
 function nextQuestion() {
     const inputs = ['age', 'income', 'wealth'];
     const inputId = inputs[state.currentQuestion];
-    const value = parseInt(document.getElementById(inputId).value) || 0;
+    const input = document.getElementById(inputId);
+    let value;
+    
+    if (inputId === 'income' || inputId === 'wealth') {
+        value = parseCurrency(input.value);
+    } else {
+        value = parseNumber(input.value);
+    }
     
     if (inputId === 'age' && value < 16) {
         alert('Idade mínima: 16 anos');
@@ -173,7 +180,7 @@ function getWeakestArea() {
 }
 
 function calculateResult() {
-    const booksValue = parseInt(document.getElementById('books').value) || 0;
+    const booksValue = parseNumber(document.getElementById('books').value);
     state.answers.books = booksValue;
     
     calculateScores();
@@ -264,6 +271,51 @@ function restart() {
     
     showScreen('landing');
 }
+
+function parseNumber(value) {
+    return parseInt(value.replace(/\D/g, '')) || 0;
+}
+
+function parseCurrency(value) {
+    const cleaned = value.replace(/[R$\s.]/g, '').replace(',', '.');
+    return parseFloat(cleaned) || 0;
+}
+
+function applyCurrencyMask(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (!value) {
+        input.value = '';
+        return;
+    }
+    value = parseInt(value);
+    const formatted = value.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+    input.value = 'R$ ' + formatted;
+}
+
+function applyNumberMask(input, maxLength) {
+    let value = input.value.replace(/\D/g, '');
+    if (maxLength) {
+        value = value.slice(0, maxLength);
+    }
+    input.value = value;
+}
+
+document.querySelectorAll('.currency').forEach(input => {
+    input.addEventListener('input', (e) => {
+        applyCurrencyMask(e.target);
+    });
+});
+
+document.getElementById('age').addEventListener('input', (e) => {
+    applyNumberMask(e.target, 3);
+});
+
+document.getElementById('books').addEventListener('input', (e) => {
+    applyNumberMask(e.target, 3);
+});
 
 document.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
