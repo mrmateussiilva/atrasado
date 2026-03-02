@@ -3,12 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>atrasado.app</title>
+    <title>atrasado.app - Descubra se você está atrás da sua geração</title>
+    <meta name="description" content="Teste rápido e gratuito: descubra em 60 segundos se você foi ultrapassado pela sua geração em renda, patrimônio, fitness e leitura.">
+    <meta name="keywords" content="teste, quiz, comparação, geração, renda, patrimônio, sukses, financeiro, fitness, leitura">
+    <meta name="author" content="atrasado.app">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://atrasado.app/">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://atrasado.app/">
+    <meta property="og:title" content="atrasado.app - Descubra se você está atrás da sua geração">
+    <meta property="og:description" content="Teste rápido e gratuito: descubra se você foi ultrapassado pela sua geração em renda, patrimônio, fitness e leitura.">
+    <meta property="og:image" content="https://atrasado.app/og-image.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="atrasado.app - Descubra se você está atrás da sua geração">
+    <meta name="twitter:description" content="Teste rápido e gratuito: descubra se você foi ultrapassado pela sua geração.">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚠️</text></svg>">
     <link rel="stylesheet" href="styles.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "atrasado.app",
+        "description": "Teste rápido para descobrir se você está atrás da sua geração em indicadores financeiros, fitness e leitura.",
+        "url": "https://atrasado.app/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "atrasado.app"
+        }
+    }
+    </script>
 </head>
 <body>
-    <main id="app">
-        <section id="landing" class="screen active">
+    <main id="app" role="main">
+        <section id="landing" class="screen active" aria-label="Página inicial">
             <div class="landing-content">
                 <h1 class="headline">Você está ficando para trás.</h1>
                 <p class="subheadline">Descubra em 60 segundos se você já foi ultrapassado pela sua própria geração.</p>
@@ -32,51 +70,51 @@
             </div>
         </section>
 
-        <section id="quiz" class="screen">
-            <div class="progress-bar">
+        <section id="quiz" class="screen" aria-label="Questionário">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="question-container" id="questionContainer">
-                <div class="question" data-question="0">
+            <div class="question-container" id="questionContainer" role="form">
+                <div class="question" data-question="0" role="group" aria-label="Pergunta 1 de 5">
                     <h2 class="question-title">Quantos anos você tem?</h2>
-                    <label class="input-label">Sua idade</label>
+                    <label class="input-label" for="age">Sua idade</label>
                     <input type="text" class="input-field" id="age" placeholder="18" maxlength="3" inputmode="numeric" autofocus>
                     <button class="next-btn" onclick="nextQuestion()">Próxima</button>
                 </div>
-                <div class="question" data-question="1">
+                <div class="question" data-question="1" role="group" aria-label="Pergunta 2 de 5">
                     <h2 class="question-title">Quanto você ganha por mês?</h2>
-                    <label class="input-label">Renda mensal</label>
+                    <label class="input-label" for="income">Renda mensal</label>
                     <input type="text" class="input-field currency" id="income" placeholder="R$ 0,00" inputmode="numeric">
                     <button class="next-btn" onclick="nextQuestion()">Próxima</button>
                 </div>
-                <div class="question" data-question="2">
+                <div class="question" data-question="2" role="group" aria-label="Pergunta 3 de 5">
                     <h2 class="question-title">Quanto você tem guardado?</h2>
-                    <label class="input-label">Patrimônio total</label>
+                    <label class="input-label" for="wealth">Patrimônio total</label>
                     <input type="text" class="input-field currency" id="wealth" placeholder="R$ 0,00" inputmode="numeric">
                     <button class="next-btn" onclick="nextQuestion()">Próxima</button>
                 </div>
-                <div class="question" data-question="3">
+                <div class="question" data-question="3" role="group" aria-label="Pergunta 4 de 5">
                     <h2 class="question-title">Quantas vezes você treina por semana?</h2>
-                    <div class="option-buttons">
+                    <div class="option-buttons" role="radiogroup" aria-label="Frequência de treino">
                         <button class="option-btn" onclick="selectOption('workout', 0)">0</button>
                         <button class="option-btn" onclick="selectOption('workout', 1)">1-2</button>
                         <button class="option-btn" onclick="selectOption('workout', 3)">3-4</button>
                         <button class="option-btn" onclick="selectOption('workout', 5)">5+</button>
                     </div>
                 </div>
-                <div class="question" data-question="4">
+                <div class="question" data-question="4" role="group" aria-label="Pergunta 5 de 5">
                     <h2 class="question-title">Quantos livros você lê por ano?</h2>
-                    <label class="input-label">Quantidade de livros</label>
+                    <label class="input-label" for="books">Quantidade de livros</label>
                     <input type="text" class="input-field" id="books" placeholder="0" maxlength="3" inputmode="numeric">
                     <button class="next-btn" onclick="calculateResult()">Ver Resultado</button>
                 </div>
             </div>
         </section>
 
-        <section id="result" class="screen">
+        <section id="result" class="screen" aria-label="Resultado do teste">
             <div class="result-container">
-                <p class="result-label">SEU PERCENTIL</p>
-                <div class="percentile" id="percentile">0%</div>
+                <p class="result-label" id="resultLabel">SEU PERCENTIL</p>
+                <div class="percentile" id="percentile" aria-labelledby="resultLabel">0%</div>
                 <p class="result-message" id="resultMessage">Você está atrás de 0% das pessoas da sua idade.</p>
                 <p class="result-detail" id="resultDetail"></p>
                 <button class="share-btn" onclick="shareResult()">Compartilhar meu resultado</button>
