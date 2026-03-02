@@ -138,8 +138,13 @@ function nextQuestion() {
         value = parseNumber(input.value);
     }
     
+    if (value === 0) {
+        showAlert('Preencha o campo para continuar');
+        return;
+    }
+    
     if (inputId === 'age' && value < 16) {
-        alert('Idade mínima: 16 anos');
+        showAlert('Idade mínima: 16 anos');
         return;
     }
     
@@ -316,6 +321,15 @@ document.getElementById('age').addEventListener('input', (e) => {
 document.getElementById('books').addEventListener('input', (e) => {
     applyNumberMask(e.target, 3);
 });
+
+function showAlert(message) {
+    document.getElementById('alertMessage').textContent = message;
+    document.getElementById('customAlert').classList.add('active');
+}
+
+function closeAlert() {
+    document.getElementById('customAlert').classList.remove('active');
+}
 
 document.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
