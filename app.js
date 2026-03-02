@@ -112,6 +112,7 @@ function showQuiz() {
     state.currentQuestion = 0;
     updateQuestion();
     showScreen('quiz');
+    setTimeout(() => document.getElementById('age').focus(), 100);
 }
 
 function updateQuestion() {
@@ -119,6 +120,15 @@ function updateQuestion() {
         q.classList.toggle('active', i === state.currentQuestion);
     });
     updateProgress();
+    
+    const inputIds = ['age', 'income', 'wealth', 'books'];
+    const inputId = inputIds[state.currentQuestion];
+    if (inputId) {
+        setTimeout(() => {
+            const input = document.getElementById(inputId);
+            if (input) input.focus();
+        }, 100);
+    }
 }
 
 function updateProgress() {
