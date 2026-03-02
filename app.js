@@ -288,11 +288,15 @@ function parseCurrency(value) {
 
 function applyCurrencyMask(input) {
     let value = input.value.replace(/\D/g, '');
-    if (!value) {
+    if (!value || value === '') {
         input.value = '';
         return;
     }
-    value = parseInt(value);
+    value = parseInt(value, 10);
+    if (isNaN(value) || value === 0) {
+        input.value = '';
+        return;
+    }
     const formatted = value.toLocaleString('pt-BR', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
@@ -302,6 +306,10 @@ function applyCurrencyMask(input) {
 
 function applyNumberMask(input, maxLength) {
     let value = input.value.replace(/\D/g, '');
+    if (!value || value === '') {
+        input.value = '';
+        return;
+    }
     if (maxLength) {
         value = value.slice(0, maxLength);
     }
