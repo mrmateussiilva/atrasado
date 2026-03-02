@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>atrasado.app</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main id="app">
+        <section id="landing" class="screen active">
+            <div class="landing-content">
+                <h1 class="headline">Você está ficando para trás.</h1>
+                <p class="subheadline">Descubra em 60 segundos se você já foi ultrapassado pela sua própria geração.</p>
+                <button class="cta-button" onclick="showQuiz()">Descobrir Agora</button>
+                <p class="punch-line">Enquanto você acha que está indo bem, alguém da sua idade já passou na sua frente.</p>
+                <div class="features">
+                    <div class="feature">
+                        <span class="feature-icon">◈</span>
+                        <span>Comparação por idade</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">◈</span>
+                        <span>Percentil realista</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">◈</span>
+                        <span>Resultado compartilhável</span>
+                    </div>
+                </div>
+                <p class="final-cta">Pare de supor. Descubra.</p>
+            </div>
+        </section>
+
+        <section id="quiz" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="question-container" id="questionContainer">
+                <div class="question" data-question="0">
+                    <h2 class="question-title">Quantos anos você tem?</h2>
+                    <input type="number" class="input-field" id="age" placeholder="Sua idade" min="16" max="100">
+                    <button class="next-btn" onclick="nextQuestion()">Próxima</button>
+                </div>
+                <div class="question" data-question="1">
+                    <h2 class="question-title">Quanto você ganha por mês?</h2>
+                    <input type="number" class="input-field" id="income" placeholder="R$ 0,00" min="0">
+                    <button class="next-btn" onclick="nextQuestion()">Próxima</button>
+                </div>
+                <div class="question" data-question="2">
+                    <h2 class="question-title">Quanto você tem guardado?</h2>
+                    <input type="number" class="input-field" id="wealth" placeholder="R$ 0,00" min="0">
+                    <button class="next-btn" onclick="nextQuestion()">Próxima</button>
+                </div>
+                <div class="question" data-question="3">
+                    <h2 class="question-title">Quantas vezes você treina por semana?</h2>
+                    <div class="option-buttons">
+                        <button class="option-btn" onclick="selectOption('workout', 0)">0</button>
+                        <button class="option-btn" onclick="selectOption('workout', 1)">1-2</button>
+                        <button class="option-btn" onclick="selectOption('workout', 3)">3-4</button>
+                        <button class="option-btn" onclick="selectOption('workout', 5)">5+</button>
+                    </div>
+                </div>
+                <div class="question" data-question="4">
+                    <h2 class="question-title">Quantos livros você lê por ano?</h2>
+                    <input type="number" class="input-field" id="books" placeholder="0 livros" min="0">
+                    <button class="next-btn" onclick="calculateResult()">Ver Resultado</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="result" class="screen">
+            <div class="result-container">
+                <p class="result-label">SEU PERCENTIL</p>
+                <div class="percentile" id="percentile">0%</div>
+                <p class="result-message" id="resultMessage">Você está atrás de 0% das pessoas da sua idade.</p>
+                <p class="result-detail" id="resultDetail"></p>
+                <button class="share-btn" onclick="shareResult()">Compartilhar meu resultado</button>
+                <button class="retry-btn" onclick="restart()">Refazer teste</button>
+            </div>
+        </section>
+    </main>
+    <footer class="disclaimer">Resultado estimado para reflexão pessoal.</footer>
+    <script src="app.js"></script>
+</body>
+</html>
